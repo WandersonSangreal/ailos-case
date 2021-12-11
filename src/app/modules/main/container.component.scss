@@ -1,0 +1,39 @@
+@import "vars";
+
+.grid {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: #{$template-l-row} #{$template-r-row};
+	grid-template-columns: #{$template-l-column} #{$template-r-column};
+	grid-template-areas: "brand top" "aside main" "aside main";
+
+	#top {
+		grid-area: top;
+		border-bottom: solid thin $border-color;
+	}
+
+	#brand {
+		grid-area: brand;
+		background-size: 60%;
+		background-color: $blue;
+		background-position: center;
+		background-repeat: no-repeat;
+		border-right: solid thin $border-color;
+	}
+
+	#sidebar {
+		grid-area: aside;
+		background-color: $blue;
+		border-right: solid thin $border-color;
+	}
+
+	#container {
+		z-index: 500;
+		grid-area: main;
+		overflow-y: auto;
+		overflow-x: hidden;
+		position: relative;
+		background-color: $container-color;
+	}
+}

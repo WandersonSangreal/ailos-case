@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {Observable, of} from "rxjs";
-import {filter} from 'rxjs/operators';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
 	selector: 'app-header',
@@ -10,38 +8,28 @@ import {filter} from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-	// public breadcrumb$: Observable<Array<{ label: string, url: string }>>;
+	public breadcrumb: Array<string> = [];
 
 	public constructor(private router: Router, private route: ActivatedRoute) {
 	}
 
 	public ngOnInit(): void {
 
-		this.createBreadcrumb(this.route);
-
-		this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(router => {
-			this.createBreadcrumb(this.route);
-		});
+		this.recursivelyBreadcrumb(this.route);
 
 	}
 
-	public createBreadcrumb(route: ActivatedRoute): void {
+	public recursivelyBreadcrumb(route: ActivatedRoute) {
 
-		const items: Array<{ label: string, url: string }> = [];
+		if (route.snapshot.data.hasOwnProperty('breadcrumb')) {
+			this.breadcrumb.push(route.snapshot.data['breadcrumb']);
+		}
 
-		console.log(route.snapshot);
-
-		/*
-		items.push({label: route.snapshot.data.breadcrumb, url: route.snapshot.url.map(url => url.path).join('/')});
-
-		route.children.forEach(child => {
-
-			items.push({label: child.snapshot.data.breadcrumb, url: child.snapshot.url.map(url => url.path).join('/')});
-
-		});
-
-		this.breadcrumb$ = of(items);
-		*/
+		if (Array.isArray(route.children)) {
+			route.children.forEach(child => {
+				this.recursivelyBreadcrumb(child);
+			});
+		}
 
 	}
 

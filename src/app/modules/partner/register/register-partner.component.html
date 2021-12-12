@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="col">
+
+			<div id="form-step">
+				<ul id="steps">
+					<li class="active">Início</li>
+					<li class="text-muted">Documentos</li>
+					<li class="text-muted">Dados cadastrais</li>
+					<li class="text-muted">Admissão</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<app-search-partner></app-search-partner>
+<br>
+<app-list-partner></app-list-partner>
+
+<div class="bottom">
+
+	<div class="container-fluid">
+
+		<div class="row">
+
+			<div class="col">
+
+				<button type="button" class="btn btn-primary btn-lg" *ngIf="(partners$ | async)?.length">
+					Iniciar nova admissão
+				</button>
+				<button type="button" class="btn btn-outline-primary btn-lg mx-2">Dicas para abertura de conta</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

@@ -1,14 +1,49 @@
 <div class="top">
 	<div class="header">
-		<h3 class="fw-bold">
-			{{ 'Nova adimissão cooperado' | uppercase }}
-		</h3>
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item text-muted">Cadastro</li>
-				<li class="breadcrumb-item text-muted">Admissão do Cooperado</li>
-				<li class="breadcrumb-item active" aria-current="page">Nova Admissão de Cooperado</li>
-			</ol>
-		</nav>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col">
+
+					<h3 class="fw-bold">
+						{{ breadcrumb[breadcrumb.length - 1] | uppercase }}
+					</h3>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item" *ngFor="let bread of breadcrumb;  let i = index"
+							    [ngClass]="{'text-muted': (i + 1) < breadcrumb.length, 'text-primary': (i + 1) === breadcrumb.length }">
+								{{ bread }}
+							</li>
+						</ol>
+					</nav>
+
+				</div>
+				<div class="col">
+
+					<div class="text-end">
+
+						<button type="button" class="btn btn-link btn-lg rounded-circle position-relative">
+							<i class="far fa-bell fa-lg"></i>
+							<small class="position-absolute translate-middle badge rounded-pill bg-danger">7</small>
+						</button>
+
+						<button type="button"
+						        class="btn btn-outline-primary rounded-pill position-relative fw-bold ms-lg-4">
+							VIACREDI
+						</button>
+
+						<button type="button"
+						        class="btn btn-link btn-lg rounded-pill position-relative user-button ms-lg-4">
+							<img src="/assets/users/user.jpg" alt="User" class="rounded-circle border border-primary">
+							<small class="position-absolute text-primary translate-middle rounded-pill">
+								<i class="fas fa-cog"></i>
+							</small>
+						</button>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
 	</div>
 </div>

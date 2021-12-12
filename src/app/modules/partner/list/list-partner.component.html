@@ -1,0 +1,77 @@
+<div class="container-fluid">
+	<div class="row" *ngFor="let partner of (partners$ | async)">
+
+		<div class="col-3">
+
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Situação Cadastral do CPF</h5>
+					<div class="card-subtitle mb-4 text-muted">Consulta da Receita Federal</div>
+					<div class="card-text mb-2">
+						<div class="row">
+							<div class="col-2 text-center position-relative">
+								<i class="fas fa-user fa-lg text-muted position-absolute top-50 start-50 translate-middle"></i>
+							</div>
+							<div class="col">
+								<small class="text-muted">Nome</small>
+								<div>
+									{{ partner.name }}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-text  mb-2">
+						<div class="row">
+							<div class="col-2 text-center position-relative">
+								<i class="far fa-check-circle fa-lg text-success position-absolute top-50 start-50 translate-middle"></i>
+							</div>
+							<div class="col">
+								<small class="text-muted">Situação do CPF</small>
+								<div>
+									{{ partner.status.name }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="col-3" *ngFor="let account of partner.accounts">
+
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">{{ account.type.name }}</h5>
+					<div class="card-subtitle mb-4 text-muted">Cooperativa Viacredi</div>
+					<div class="card-text mb-2">
+						<div class="row">
+							<div class="col-2 text-center position-relative">
+								<i class="fas fa-credit-card fa-lg text-muted position-absolute top-50 start-50 translate-middle"></i>
+							</div>
+							<div class="col">
+								<small class="text-muted">Número da conta</small>
+								<div>
+									{{ account.number }}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-text  mb-2">
+						<div class="row">
+							<div class="col">
+								<div>
+									<button type="button" class="btn btn-link btn-lg fw-bold">Duplicar conta</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+</div>

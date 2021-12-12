@@ -1,0 +1,86 @@
+@import "vars";
+
+.bottom {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 2rem;
+	position: absolute;
+	background-color: white;
+}
+
+#form-step {
+	text-align: center;
+
+	#steps {
+		width: 40%;
+		padding: 0;
+		margin: auto;
+		overflow: hidden;
+
+		&.active {
+			color: $blue;
+
+			&:before, &:after {
+				background-color: $blue;
+			}
+		}
+
+		& > li {
+			width: 25%;
+			float: left;
+			position: relative;
+			text-align: center;
+			list-style-type: none;
+
+			&:before {
+				content: '';
+				width: 21px;
+				padding: 2px;
+				height: 21px;
+				display: block;
+				line-height: 21px;
+				border-radius: 50%;
+				background: $gray-600;
+				margin: 0 auto 10px auto;
+			}
+
+			&:after {
+				left: 0;
+				top: 10px;
+				z-index: -1;
+				content: '';
+				width: 100%;
+				height: 2px;
+				position: absolute;
+				background: $gray-600;
+			}
+
+			&:first-child {
+				&:after {
+					left: 50%;
+					width: 50%;
+				}
+			}
+
+			&:last-child {
+				&:after {
+					width: 50%;
+				}
+			}
+
+			&.active {
+				&:before, &:after {
+					background-color: $blue;
+				}
+
+				&:before {
+					border: solid 2px $blue;
+					background-color: $container-color;
+				}
+			}
+
+		}
+
+	}
+}

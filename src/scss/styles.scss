@@ -1,3 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "vars";
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "node_modules/@fortawesome/fontawesome-free/scss/regular";
+
+@each $color, $value in $theme-colors {
+	.btn-outline-#{$color} {
+		@include button-outline-variant($value, $value, rgba($value, 0.2));
+	}
+}
+
+.btn {
+	.badge {
+		top: 14px;
+	}
+}

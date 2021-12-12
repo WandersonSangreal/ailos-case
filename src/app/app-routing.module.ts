@@ -6,6 +6,9 @@ const routes: Routes = [
 	{
 		path: '',
 		component: ContainerComponent,
+		data: {
+			breadcrumb: 'Cadastro'
+		},
 		children: [
 			{
 				path: '',

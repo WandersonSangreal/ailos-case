@@ -15,11 +15,13 @@
 
 	#brand {
 		grid-area: brand;
+		text-align: center;
 		background-size: 60%;
 		background-color: $blue;
 		background-position: center;
 		background-repeat: no-repeat;
 		border-right: solid thin $border-color;
+		background-image: url("/assets/brand/logo.png");
 	}
 
 	#sidebar {
@@ -34,6 +36,7 @@
 		overflow-y: auto;
 		overflow-x: hidden;
 		position: relative;
+		padding: 2rem 1rem;
 		background-color: $container-color;
 	}
 }

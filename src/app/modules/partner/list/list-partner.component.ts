@@ -15,6 +15,10 @@ export class ListPartnerComponent implements OnInit {
 	public constructor(private partnerService: PartnerService) {
 	}
 
+	public get response(): boolean {
+		return this.partnerService.response;
+	}
+
 	public ngOnInit(): void {
 
 		this.partners$ = this.partnerService.partnerSubject.asObservable();

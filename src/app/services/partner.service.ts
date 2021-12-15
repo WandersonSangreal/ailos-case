@@ -8,6 +8,7 @@ import {PARTNERS} from "./mock-partners";
 })
 export class PartnerService {
 
+	public response: boolean = false;
 	private partners$: Subject<Array<Partner>> = new Subject<Array<Partner>>();
 
 	public constructor() {
@@ -21,6 +22,7 @@ export class PartnerService {
 
 	public searchPartners(search: string): Promise<boolean> {
 
+		this.response = false;
 		this.partners$.next([]);
 
 		return new Promise((resolve, reject) => {
@@ -28,6 +30,8 @@ export class PartnerService {
 			of(PARTNERS).pipe(delay(2000), map(values => values.filter(value => value.cpf === search))).subscribe(results => {
 
 				this.partners$.next(results);
+
+				this.response = true;
 
 				resolve(true);
 

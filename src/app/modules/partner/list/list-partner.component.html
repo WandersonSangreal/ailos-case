@@ -1,4 +1,8 @@
 <div class="container-fluid">
+	<div class="alert alert-warning alert-dismissible fade show" role="alert"
+	     *ngIf="(partners$ | async)?.length === 0 && response">
+		<strong>Nenhum registro foi encontrado!</strong> O CPF digitado não foi encontrado na pesquisa, tente outro CPF.
+	</div>
 	<div class="row" *ngFor="let partner of (partners$ | async)">
 
 		<div class="col-3">
